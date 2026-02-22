@@ -27,10 +27,14 @@ function addBookToLibrary(title, author, pages, status) {
 
 addBookToLibrary("alex", "george", 12, "yes");
 addBookToLibrary("alex", "george", 12, "yes");
+addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "not yet read");
 console.log(myLibrary)
 
 // 
 
 myLibrary.forEach( (book) => {
-    ; 
+    const sectionMain = document.querySelector(".mainContent");
+    const newDiv = document.createElement("div");
+    sectionMain.appendChild(newDiv);
+    newDiv.textContent = book.title + " " + book.author + " " + book.pages + " " + book.status;  
 } );
