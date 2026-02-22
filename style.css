@@ -1,0 +1,26 @@
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.headerContainer {
+    position: sticky;
+    top: 0px;
+    height: 10vh; 
+    background-color: green;
+}
+
+.headerContainer div {
+    background-color: green;
+}
+
+section {
+    width: 60vw; 
+    background-color: red;
+    margin: auto;
+    height: 90vh;     
+} 
