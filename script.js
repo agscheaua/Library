@@ -25,16 +25,18 @@ function addBookToLibrary(title, author, pages, status) {
 
 // created books;
 
-addBookToLibrary("alex", "george", 12, "yes");
-addBookToLibrary("alex", "george", 12, "yes");
-addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "not yet read");
+addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "not read it");
+addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "read it");
+addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "not read it");
+addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "read it");
 console.log(myLibrary)
 
 // 
 
 myLibrary.forEach( (book) => {
-    const sectionMain = document.querySelector(".mainContent");
-    const newDiv = document.createElement("div");
-    sectionMain.appendChild(newDiv);
-    newDiv.textContent = book.title + " " + book.author + " " + book.pages + " " + book.status;  
+    const bookCardContainer = document.querySelector(".bookCardContainer");
+    const newDiv = document.createElement("div")
+    newDiv.classList.add("book");
+    bookCardContainer.appendChild(newDiv);
+    newDiv.textContent = book.title + ", written by " +book.author + ", has " + book.pages + " pages, and I did " + book.status + ".";
 } );
