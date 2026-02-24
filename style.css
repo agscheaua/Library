@@ -20,6 +20,11 @@
     grid-template-rows: 1fr 1fr;
 }
 
+.controlBord {
+    margin: auto;
+}
+
+
 /* webpageTitle style*/
 
 .webpageTitle {
@@ -44,8 +49,8 @@
 .titleLibrary {
     text-align: center;
     padding: 10px 0px 5px 0px;   
-    border-bottom: 1px solid;
-    border-radius: 1px; 
+    border-bottom: 2px solid; 
+    border-radius: 3px; 
     font-size: 1.5rem; 
 }
 
@@ -67,4 +72,13 @@
     border-left: 5px solid #00428c;   
     font-size: 1.3rem; 
     box-shadow: 1px 1px 2px 1px;       
+}
+
+/* */
+
+.dialogWindow {
+    height: 400px;
+    margin: 200px auto;
+    border-radius: 5px;
+    border: 2px solid #00428c;
 }

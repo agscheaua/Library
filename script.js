@@ -31,7 +31,7 @@ addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "not read it");
 addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "read it");
 console.log(myLibrary)
 
-// 
+// create the book cards;
 
 myLibrary.forEach( (book) => {
     const bookCardContainer = document.querySelector(".bookCardContainer");
@@ -40,3 +40,15 @@ myLibrary.forEach( (book) => {
     bookCardContainer.appendChild(newDiv);
     newDiv.textContent = book.title + ", written by " +book.author + ", has " + book.pages + " pages, and I did " + book.status + ".";
 } );
+
+// dialog window 
+
+const dialogShow = document.querySelector(".dialogShow");
+const dialogWindow = document.querySelector(".dialogWindow");
+const dialogClose = document.querySelector(".dialogClose");
+dialogShow.addEventListener("click", () => {
+    dialogWindow.showModal();
+});
+dialogClose.addEventListener("click", () => {
+    dialogWindow.close();   
+});

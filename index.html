@@ -10,10 +10,34 @@
 <body>
     <header class="headerContainer">
         <div class="webpageTitle">Your Personal Library</div>
-        <div>
-            <button>Click me!
-
-            </button>
+        <div class="controlBord">
+            <button type="button" class="dialogShow">New Book</button>
+            <dialog class="dialogWindow">
+                <form action="" method="dialog">
+                    <div>
+                        <label for="bookName">Book name:</label>
+                        <input id="bookName" type="text" name="bookName"/>
+                    </div>
+                    <div>
+                        <label for="author">Author name:</label>
+                        <input id="author" type="text" name="author"/>
+                    </div>
+                    <div>
+                        <label for="pageNr">Page number:</label>
+                        <input id="pageNr" type="number" name="pageNr"/>
+                    </div>
+                    <div>
+                        <label for="statusBook">Status:</label>
+                        <select id="statusBook" name="statusBook">
+                            <option value="">--Please select a option--</option>
+                            <option value="read it">read it</option>
+                            <option value="not read it">not read it</option>
+                        </select>
+                    </div>
+                    <button class="submitForm" formmethod="dialog">Submit</button>
+                </form>
+                <button type="button" class="dialogClose">Close</button>
+            </dialog> 
         </div>
     </header>
     <section class="libraryContainer">
@@ -25,7 +49,6 @@
         </div>
     </section>
     <footer>
-
     </footer>
 </body>
 </html>
