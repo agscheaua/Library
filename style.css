@@ -20,11 +20,6 @@
     grid-template-rows: 1fr 1fr;
 }
 
-.controlBord {
-    margin: auto;
-}
-
-
 /* webpageTitle style*/
 
 .webpageTitle {
@@ -33,6 +28,20 @@
     justify-self: center; 
     color: #dcdcdc;
     letter-spacing: 3px;  
+}
+
+/* control bord buttons */
+
+.controlBord {
+    margin: auto;
+}
+
+.controlBord button { 
+    font-size: 1.3rem;
+    padding: 3px; 
+    border: 1px solid;
+    border-radius: 5px;
+    
 }
 
 /* section styles size*/
@@ -74,11 +83,65 @@
     box-shadow: 1px 1px 2px 1px;       
 }
 
-/* */
+/* dialog window */
 
-.dialogWindow {
-    height: 400px;
-    margin: 200px auto;
+.dialogWindow {  
+    height: 415px;    
+    width: 580px;      
+    margin: auto;
     border-radius: 5px;
     border: 2px solid #00428c;
+    padding: 20px;
 }
+
+/* dialog + form styles */
+
+form {
+    font-size: 1.3rem;
+}
+
+:modal { 
+    background-color: #dcdcdc;
+}
+
+form > div {
+    margin-top: 20px;
+}
+
+form label {
+    display: inline-block;
+    width: 150px; 
+    vertical-align: -10px;    
+} 
+
+form select,
+form input { 
+    font-size: 1.3rem;
+    padding: 5px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+dialog button {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    padding: 5px 5px 5px 0px;    
+    border-radius: 5px;  
+    border: 1px solid; 
+    text-align: left;
+}
+
+
+
+
+/* different screen size layout */
+
+/* dialog window modal */
+
+@media only screen and (max-width: 540px) {                       
+   .dialogWindow {  
+    height: 530px;     
+}
+}
+ 
