@@ -39,6 +39,7 @@ myLibrary.forEach( (book) => {
     newDiv.textContent = book.title + ", written by " +book.author + ", has " + book.pages + " pages, and " + book.status + ".";
 } );
 
+
 // dialog window; 
 
 const dialogShow = document.querySelector(".dialogShow");
@@ -79,6 +80,17 @@ submitForm.addEventListener("click", (elem) => {
         author.value = "";
         pageNr.value = "";
         statusBook.value = "";
+
+        const bookCard = document.querySelectorAll(".book"); 
+        bookCard.forEach( (elem) => {
+            const delButton = document.createElement("button");
+            elem.appendChild(delButton);
+            delButton.textContent = "Delete";
+    
+            delButton.addEventListener("click", () => {
+                elem.remove();
+            });
+        });
     }
     else {
         infoMessage.textContent = "You didn't fill in all the forms!";
@@ -86,6 +98,23 @@ submitForm.addEventListener("click", (elem) => {
         author.value = "";
         pageNr.value = "";
         statusBook.value = "";
-    };
-}) 
+    }
+    console.log(myLibrary);
+} ) 
+
+// delete book cards;
+
+const bookCard = document.querySelectorAll(".book"); 
+bookCard.forEach( (elem) => {
+    const delButton = document.createElement("button");
+    elem.appendChild(delButton);
+    delButton.textContent = "Delete";
+    
+    delButton.addEventListener("click", () => {
+        elem.remove();
+    })
+    
+})
+
+
 
