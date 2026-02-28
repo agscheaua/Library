@@ -23,23 +23,6 @@ function addBookToLibrary(title, author, pages, status) {
     myLibrary.push(newBook);
 };
 
-// created books;
-
-addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "I did not read it");
-addBookToLibrary("theHobbit", "JJJ Tolkien", 346, "I read it");
-console.log(myLibrary)
-
-// create the book cards; 
-
-myLibrary.forEach( (book) => {
-    const bookCardContainer = document.querySelector(".bookCardContainer");
-    const newDiv = document.createElement("div")
-    newDiv.classList.add("book");
-    bookCardContainer.appendChild(newDiv);
-    newDiv.textContent = book.title + ", written by " +book.author + ", has " + book.pages + " pages, and " + book.status + ".";
-} );
-
-
 // dialog window; 
 
 const dialogShow = document.querySelector(".dialogShow");
@@ -58,39 +41,63 @@ dialogClose.addEventListener("click", () => {
     infoMessage.textContent = "";
 });
 
-// create new book cards;
+// create new book cards and delete them;
 
 const bookName = document.querySelector("#bookName");
 const author = document.querySelector("#author");
 const pageNr = document.querySelector("#pageNr");
 const statusBook = document.querySelector("#statusBook");
+
 const infoMessage = document.querySelector(".infoMessage");
 const submitForm = document.querySelector(".submitForm");
+const bookCardContainer = document.querySelector(".bookCardContainer");
 
 submitForm.addEventListener("click", (elem) => { 
     elem.preventDefault();
     if (bookName.value && author.value && pageNr.value && statusBook.value) {
+
         addBookToLibrary(bookName.value, author.value, pageNr.value, statusBook.value);
-        const bookCardContainer = document.querySelector(".bookCardContainer");
-        const newDiv = document.createElement("div")
-        newDiv.classList.add("book");
-        bookCardContainer.appendChild(newDiv);
-        newDiv.textContent = bookName.value + ", written by " + author.value + ", has " + pageNr.value + " pages, and " + statusBook.value + ".";
+
+        const bookCard = document.createElement("div");
+        bookCard.classList.add("bookCard");
+        const idAttribute = myLibrary.length -1;
+        bookCard.setAttribute("data-id", myLibrary[idAttribute].id);
+        bookCardContainer.appendChild(bookCard);
+
+            const book = document.createElement("div");
+            book.classList.add("book");
+            bookCard.appendChild(book);
+            book.textContent = bookName.value + ", written by " + author.value + ", has " + pageNr.value + " pages, and " + statusBook.value + ".";
+
+            const buttonsControl = document.createElement("div");
+            buttonsControl.classList.add("buttonsControls");
+            bookCard.appendChild(buttonsControl);
+             
+                const delButton = document.createElement("button");
+                delButton.classList.add("delButton")
+                delButton.textContent = "Delete";
+                buttonsControl.appendChild(delButton);
+
+        const getdelButton = Array.from(document.querySelectorAll(".delButton"));
+        getdelButton.forEach( (elem) => { 
+            elem.addEventListener("click", () => {
+                const elemPPElement = (elem.parentElement).parentElement;
+                elemPPElement.remove();  
+                myLibrary.forEach( (obj) => {
+                    if (obj.id === elemPPElement.dataset.id) { 
+                        const objDel = myLibrary.indexOf(obj);
+                        myLibrary.splice(objDel, 1);
+                    }
+                    else {
+                        false;
+                    };
+                }); 
+            });
+        }); 
         bookName.value = "";
         author.value = "";
         pageNr.value = "";
         statusBook.value = "";
-
-        const bookCard = document.querySelectorAll(".book"); 
-        bookCard.forEach( (elem) => {
-            const delButton = document.createElement("button");
-            elem.appendChild(delButton);
-            delButton.textContent = "Delete";
-    
-            delButton.addEventListener("click", () => {
-                elem.remove();
-            });
-        });
     }
     else {
         infoMessage.textContent = "You didn't fill in all the forms!";
@@ -102,19 +109,8 @@ submitForm.addEventListener("click", (elem) => {
     console.log(myLibrary);
 } ) 
 
-// delete book cards;
 
-const bookCard = document.querySelectorAll(".book"); 
-bookCard.forEach( (elem) => {
-    const delButton = document.createElement("button");
-    elem.appendChild(delButton);
-    delButton.textContent = "Delete";
-    
-    delButton.addEventListener("click", () => {
-        elem.remove();
-    })
-    
-})
+
 
 
 
