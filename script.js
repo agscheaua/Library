@@ -15,6 +15,15 @@ function Book(title, author, pages, status) {
     this.pages = pages;
     this.status = status;
 };
+Book.prototype.changeStatus = function () {
+    if (this.status === "I did not read it") {
+        this.status = "I read it";  
+    }
+    else if (this.status === "I read it") {
+        this.status = "I did not read it";
+    }
+    else {};
+}; 
 
 // the function to create new books and store them in the array;
 
@@ -78,8 +87,8 @@ submitForm.addEventListener("click", (elem) => {
                 delButton.textContent = "Delete";
                 buttonsControl.appendChild(delButton);
 
-        const getdelButton = Array.from(document.querySelectorAll(".delButton"));
-        getdelButton.forEach( (elem) => { 
+        const getdelButtons = Array.from(document.querySelectorAll(".delButton"));
+        getdelButtons.forEach( (elem) => { 
             elem.addEventListener("click", () => {
                 const elemPPElement = (elem.parentElement).parentElement;
                 elemPPElement.remove();  
@@ -94,6 +103,30 @@ submitForm.addEventListener("click", (elem) => {
                 }); 
             });
         }); 
+
+        const statusButtons = document.createElement("button");
+        statusButtons.classList.add("statusButton");
+        statusButtons.textContent = "text";
+        buttonsControl.appendChild(statusButtons);
+        
+        const getstatusButtons = Array.from(document.querySelectorAll(".statusButton"));
+        getstatusButtons.forEach( (elem) => {
+            elem.addEventListener("click", () => {
+                const statusButtonsSibling = (elem.parentElement).previousElementSibling;
+                const elemPPElement = (elem.parentElement).parentElement;
+                myLibrary.forEach( (obj) => {
+                    if (obj.id === elemPPElement.dataset.id) {
+                        const objStat = myLibrary.indexOf(obj);
+                        myLibrary[objStat].changeStatus(); 
+                        const obj1 = myLibrary[objStat];
+                        statusButtonsSibling.textContent = obj1.title + ", written by " + obj1.author + ", has " + obj1.pages + " pages, and " + obj1.status + ".";  
+                    }
+                    else {
+                    };
+                } );
+            });
+        });
+        
         bookName.value = "";
         author.value = "";
         pageNr.value = "";
