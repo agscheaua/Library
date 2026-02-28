@@ -111,20 +111,24 @@ submitForm.addEventListener("click", (elem) => {
         
         const getstatusButtons = Array.from(document.querySelectorAll(".statusButton"));
         getstatusButtons.forEach( (elem) => {
-            elem.addEventListener("click", () => {
+            if (elem === elemPPElement)
+
                 const statusButtonsSibling = (elem.parentElement).previousElementSibling;
                 const elemPPElement = (elem.parentElement).parentElement;
+                console.log(elem);
                 myLibrary.forEach( (obj) => {
                     if (obj.id === elemPPElement.dataset.id) {
+                            elem.addEventListener("click", () => {
                         const objStat = myLibrary.indexOf(obj);
                         myLibrary[objStat].changeStatus(); 
                         const obj1 = myLibrary[objStat];
                         statusButtonsSibling.textContent = obj1.title + ", written by " + obj1.author + ", has " + obj1.pages + " pages, and " + obj1.status + ".";  
+                        console.log(obj1);
+                        });  
                     }
                     else {
                     };
-                } );
-            });
+                } ); 
         });
         
         bookName.value = "";
