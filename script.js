@@ -50,7 +50,7 @@ dialogClose.addEventListener("click", () => {
     infoMessage.textContent = "";
 });
 
-// create new book cards and delete them;
+// create new book cards, delete them and change their status; 
 
 const bookName = document.querySelector("#bookName");
 const author = document.querySelector("#author");
@@ -87,50 +87,40 @@ submitForm.addEventListener("click", (elem) => {
                 delButton.textContent = "Delete";
                 buttonsControl.appendChild(delButton);
 
-        const getdelButtons = Array.from(document.querySelectorAll(".delButton"));
-        getdelButtons.forEach( (elem) => { 
-            elem.addEventListener("click", () => {
-                const elemPPElement = (elem.parentElement).parentElement;
-                elemPPElement.remove();  
+                const statusButtons = document.createElement("button");
+                statusButtons.classList.add("statusButton");
+                statusButtons.textContent = "Change status";
+                buttonsControl.appendChild(statusButtons);
+        
+        buttonsControl.addEventListener("click", (elem) => {
+            const statusButtonsSibling = (elem.target.parentElement).previousElementSibling;
+            const elemPPElement = (elem.target.parentElement).parentElement; 
+            if (elem.target.textContent === "Change status") { 
+                myLibrary.forEach( (obj) => {
+                    if (obj.id === elemPPElement.dataset.id) {
+                        const objStat = myLibrary.indexOf(obj);
+                        myLibrary[objStat].changeStatus(); 
+                        const obj1 = myLibrary[objStat];
+                        statusButtonsSibling.textContent = obj1.title + ", written by " + obj1.author + ", has " + obj1.pages + " pages, and " + obj1.status + ".";    
+                    }
+                    else {};
+                } ); 
+            }
+            else if (elem.target.textContent = "Delete") {
                 myLibrary.forEach( (obj) => {
                     if (obj.id === elemPPElement.dataset.id) { 
                         const objDel = myLibrary.indexOf(obj);
                         myLibrary.splice(objDel, 1);
                     }
                     else {
-                        false;
+                        false; 
                     };
+                    elemPPElement.remove(); 
                 }); 
-            });
-        }); 
-
-        const statusButtons = document.createElement("button");
-        statusButtons.classList.add("statusButton");
-        statusButtons.textContent = "text";
-        buttonsControl.appendChild(statusButtons);
-        
-        const getstatusButtons = Array.from(document.querySelectorAll(".statusButton"));
-        getstatusButtons.forEach( (elem) => {
-            if (elem === elemPPElement)
-
-                const statusButtonsSibling = (elem.parentElement).previousElementSibling;
-                const elemPPElement = (elem.parentElement).parentElement;
-                console.log(elem);
-                myLibrary.forEach( (obj) => {
-                    if (obj.id === elemPPElement.dataset.id) {
-                            elem.addEventListener("click", () => {
-                        const objStat = myLibrary.indexOf(obj);
-                        myLibrary[objStat].changeStatus(); 
-                        const obj1 = myLibrary[objStat];
-                        statusButtonsSibling.textContent = obj1.title + ", written by " + obj1.author + ", has " + obj1.pages + " pages, and " + obj1.status + ".";  
-                        console.log(obj1);
-                        });  
-                    }
-                    else {
-                    };
-                } ); 
+            }
+            else {};
         });
-        
+
         bookName.value = "";
         author.value = "";
         pageNr.value = "";
@@ -143,7 +133,7 @@ submitForm.addEventListener("click", (elem) => {
         pageNr.value = "";
         statusBook.value = "";
     }
-    console.log(myLibrary);
+    console.log(myLibrary); 
 } ) 
 
 
