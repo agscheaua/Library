@@ -66,11 +66,12 @@
 
 .bookCardContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  
     grid-auto-rows: 1fr; 
 }
  
 .bookCard { 
+    max-width: 400px;
     padding: 10px;
     margin: 10px;
     border: 1px solid;
@@ -131,8 +132,31 @@ dialog button {
     text-align: left;
 }
 
+.buttonsControls {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
 
+.statusButton,
+.delButton {
+    padding: 5px; 
+    font-size: 1rem; 
+    text-align: left;
+    border-radius: 5px;
+    border: 1px solid;
+}
 
+.delButton:hover {
+    border: 2px solid #00428c;
+}
+.statusButton:hover {
+    border: 2px solid #00428c;
+}
+
+.delButton {
+    margin-bottom: 10px; 
+}
 
 /* different screen size layout */
 
