@@ -1,4 +1,13 @@
 import './styles.css'
+import { addClickVerification } from "./validationForm.js";
+import { hideErrorBox } from './validationForm.js';
+import { clearErrorBoxWhenCloseModal } from './validationForm.js';
+import { clearErrorBoxWhenOpenModal } from './validationForm.js';
+
+hideErrorBox();
+addClickVerification();
+clearErrorBoxWhenCloseModal();
+clearErrorBoxWhenOpenModal();
 
 // the array where the books will be placed;
 
@@ -21,7 +30,6 @@ Book.prototype.changeStatus = function () {
     this.status = 'I read it'
   } else if (this.status === 'I read it') {
     this.status = 'I did not read it'
-  } else {
   }
 }
 
@@ -39,7 +47,6 @@ const dialogWindow = document.querySelector('.dialogWindow')
 const dialogClose = document.querySelector('.dialogClose')
 dialogShow.addEventListener('click', () => {
   dialogWindow.showModal()
-  infoMessage.textContent = ''
 })
 dialogClose.addEventListener('click', () => {
   dialogWindow.close()
@@ -47,7 +54,6 @@ dialogClose.addEventListener('click', () => {
   author.value = ''
   pageNr.value = ''
   statusBook.value = ''
-  infoMessage.textContent = ''
 })
 
 // create new book cards, delete them and change their status;
@@ -57,7 +63,6 @@ const author = document.querySelector('#author')
 const pageNr = document.querySelector('#pageNr')
 const statusBook = document.querySelector('#statusBook')
 
-const infoMessage = document.querySelector('.infoMessage')
 const submitForm = document.querySelector('.submitForm')
 const bookCardContainer = document.querySelector('.bookCardContainer')
 
@@ -123,10 +128,9 @@ submitForm.addEventListener('click', (elem) => {
               ' pages, and ' +
               obj1.status +
               '.'
-          } else {
           }
         })
-      } else if ((elem.target.textContent = 'Delete')) {
+      } else if ((elem.target.textContent === 'Delete')) {
         myLibrary.forEach((obj) => {
           if (obj.id === elemPPElement.dataset.id) {
             const objDel = myLibrary.indexOf(obj)
@@ -136,7 +140,6 @@ submitForm.addEventListener('click', (elem) => {
           }
           elemPPElement.remove()
         })
-      } else {
       }
     })
 
@@ -145,7 +148,6 @@ submitForm.addEventListener('click', (elem) => {
     pageNr.value = ''
     statusBook.value = ''
   } else {
-    infoMessage.textContent = "You didn't fill in all the forms!"
     bookName.value = ''
     author.value = ''
     pageNr.value = ''
