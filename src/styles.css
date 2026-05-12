@@ -85,7 +85,7 @@
 /* dialog window */
 
 .dialogWindow {
-  height: 415px;
+  height: 450px;
   width: 580px;
   margin: auto;
   border-radius: 5px;
@@ -161,11 +161,7 @@ dialog button {
 
 /* dialog window modal */
 
-@media only screen and (max-width: 540px) {
-  .dialogWindow {
-    height: 530px;
-  }
-}
+
 
 /* */
 
@@ -180,6 +176,7 @@ form input {
   width: 300px;
   padding-top: 0px;
   margin-top: -5px;
+  font-size: 1rem;
 }
 
 .errorMessageBook,
@@ -200,4 +197,21 @@ div input:invalid {
 div select:invalid {
   border-end-end-radius: 0px;
   border-end-start-radius: 0px;
+}
+
+.error {
+  background-color: darkred;
+  color: whitesmoke;
+}
+
+@media only screen and (max-width: 540px) {
+  .dialogWindow {
+    height: 530px;
+    height: 580px;
+  }
+
+  .errorMsj {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
 }
